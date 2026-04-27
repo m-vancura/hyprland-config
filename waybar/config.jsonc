@@ -8,30 +8,27 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "sway/mode",
-        "sway/scratchpad",
-        "custom/media"
+	//"tray",
+	"hyprland/language"
+	//"keyboard-state"
+	//"custom/media"
     ],
     "modules-center": [
-        //"sway/window"
-	"clock"
+        "clock"
     ],
     "modules-right": [
        // "mpd",
         "idle_inhibitor",
         "pulseaudio",
         "network",
-        "power-profiles-daemon",
+        //"power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
        // "backlight",
-        "keyboard-state",
-        "sway/language",
        // "battery",
        // "battery#bat2",
        // "clock",
-        "tray",
         "custom/power"
     ],
     // Modules configuration
@@ -59,16 +56,15 @@
             "unlocked": ""
         }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
+
+    "hyprland/language": {
+        "format": "{short}",
+	"format-cz": "CZ",
+        "format-us": "EN",
+        "format-ch": "FR",
+	"on-click": "hyprctl switchxkblayout 56175a56e160 next"
+    },    
+
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
@@ -104,7 +100,7 @@
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10,
+        "spacing": 10
         // "icons": {
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
@@ -168,9 +164,9 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "format-ethernet": "{ipaddr}/{cidr} 모",//",
+        "tooltip-format": "{ifname} via {gwaddr} 모",//",
+        "format-linked": "{ifname} (No IP) 모", //",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
@@ -205,16 +201,19 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
+
+
+
     "custom/power": {
         "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+	"tooltip": false,
+	"menu": "on-click",
+	"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+	"menu-actions": {
+	    "shutdown": "shutdown",
+	    "reboot": "reboot",
+	    "suspend": "systemctl suspend",
+	    "hibernate": "systemctl hibernate"
+	}
     }
 }
